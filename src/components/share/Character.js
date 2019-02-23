@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 
 export class Character extends Component {
-    
+    constructor(props) {
+		super(props)
+		this.onClickHandle = this.onClickHandle.bind(this)
+	}
 
-    onClickHandle = (e) =>{
+    onClickHandle(e){
         console.log(e.target.value);
         this.props.onSelect(e.target.value);
     }

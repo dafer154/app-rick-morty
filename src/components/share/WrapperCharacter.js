@@ -39,7 +39,9 @@ export class WrapperCharacter extends Component {
         const BASE_URL = 'https://rickandmortyapi.com/api/';
         axios.get(`${BASE_URL}${detail}`)
               .then(res => {
-                console.log(res.data);
+                return this.setState({
+                    character: res.data
+                });
               })
     }
 
