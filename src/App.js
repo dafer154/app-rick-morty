@@ -6,6 +6,7 @@ import Home from "./components/Home/Home";
 import ListCharacters from "./components/ListCharacters/ListCharacters";
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">

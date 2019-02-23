@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import {WrapperCharacter} from '../share/WrapperCharacter';
-import axios from 'axios';
 
 class Home extends Component{
 
@@ -17,7 +16,7 @@ class Home extends Component{
 
     render(){
         return(
-            <h1>Soy un home jujujuju</h1>
+            <WrapperCharacter />
         )
     }
 }
