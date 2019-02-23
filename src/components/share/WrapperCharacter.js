@@ -5,9 +5,14 @@ import axios from 'axios';
 
 export class WrapperCharacter extends Component {
 
-    state = {
-        characters: []
-      };
+    constructor(props){
+        super(props)
+        this.state= {
+            characters: [],
+            character: {}
+        }
+        this.onSelect = this.onSelect.bind(this);
+    };
 
     componentDidMount(){
         this.allCharacters();
@@ -28,24 +33,26 @@ export class WrapperCharacter extends Component {
 
     }
 
-    redirectCharacter(id){
-
+    onSelect(id){
+        console.log("jujujujuu")
+        const detail = `character/${id}`;
+        const BASE_URL = 'https://rickandmortyapi.com/api/';
+        axios.get(`${BASE_URL}${detail}`)
+              .then(res => {
+                console.log(res.data);
+              })
     }
 
-
-
     render() {
-
-    console.log(this.characters);
 
     return (
         <div style={wrapperCharacter} className="container">
         {this.state.characters.map(character => (
         <Character
           key={character.id}
+          pkCharacter={character.id}
           src={character.image}
-          name={character.name}
-          redirectCharacter = {this.redirectCharacter()}
+          onSelect = {this.onSelect}
           /> 
           ))}
         </div> ) 
