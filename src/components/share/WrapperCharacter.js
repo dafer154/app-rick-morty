@@ -1,71 +1,70 @@
 import React, { Component } from "react";
 import { Character } from "../share/Character";
-//import {allCharacters} from '../../actions/Service';
-import axios from 'axios';
+import axios from "axios";
 
 export class WrapperCharacter extends Component {
-
-    constructor(props){
-        super(props)
-        this.state= {
-            characters: [],
-            character: {}
-        }
-        this.onSelect = this.onSelect.bind(this);
+  constructor() {
+    super();
+    this.state = {
+      characters: [],
+      id: null,
+      pages: false
     };
+    this.onSelect = this.onSelect.bind(this);
+  }
 
-    componentDidMount(){
-        this.allCharacters();
+  componentDidMount() {
+    this.allCharacters();
+  }
+
+  allCharacters() {
+    const pathLocation = window.location.pathname;
+    const character = "character";
+    const BASE_URL = "https://rickandmortyapi.com/api/";
+
+    if (pathLocation === "/home") {
+      axios.get(`${BASE_URL}${character}`).then(res => {
+        return this.setState({
+          characters: res.data.results.slice(0, 3)
+        });
+      });
+    } else {
+      axios.get(`${BASE_URL}${character}`).then(res => {
+        return this.setState({
+          characters: res.data.results
+        });
+      });
     }
+  }
 
-    allCharacters(){
-        const character = 'character';
-        const BASE_URL = 'https://rickandmortyapi.com/api/';
-        axios.get(`${BASE_URL}${character}`)
-              .then(res => {
-                return this.setState({
-                    characters: res.data.results
-                });
-              });
-    };
+  randomCharacters() {
+    //create number random for show the characters
+  }
 
-    randomCharacters(){
+  onSelect(id) {
+    return this.props.history.push(`/character/${id}`);
+  }
 
-    }
-
-    onSelect(id){
-        console.log("jujujujuu")
-        const detail = `character/${id}`;
-        const BASE_URL = 'https://rickandmortyapi.com/api/';
-        axios.get(`${BASE_URL}${detail}`)
-              .then(res => {
-                return this.setState({
-                    character: res.data
-                });
-              })
-    }
-
-    render() {
-
+  render() {
     return (
-        <div style={wrapperCharacter} className="container">
+      <div style={wrapperCharacter} className="container">
         {this.state.characters.map(character => (
-        <Character
-          key={character.id}
-          pkCharacter={character.id}
-          src={character.image}
-          onSelect = {this.onSelect}
-          /> 
-          ))}
-        </div> ) 
+          <Character
+            key={character.id}
+            pkCharacter={character.id}
+            src={character.image}
+            name={character.name}
+            onSelect={this.onSelect}
+          />
+        ))}
+      </div>
+    );
   }
 }
 
-
 const wrapperCharacter = {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    margin: '5%'
-
-}
+  display: "flex",
+  flexWrap: "wrap",
+  justifyContent: "space-between",
+  margin: "5%"
+};

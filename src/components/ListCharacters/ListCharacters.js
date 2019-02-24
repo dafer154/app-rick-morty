@@ -1,11 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
+import { WrapperCharacter } from "../share/WrapperCharacter";
 
-class ListCharacters extends Component{
-    render(){
-        return(
-            <p>Soy una prueba ome ome</p>
-        )
-    }
+class ListCharacters extends Component {
+  render() {
+    return <WrapperCharacter />;
+  }
 }
 
 export default ListCharacters;
