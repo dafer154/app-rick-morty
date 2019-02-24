@@ -8,37 +8,56 @@ export class WrapperCharacter extends Component {
     this.state = {
       characters: [],
       id: null,
-      pages: false
+      pages: false,
+      page: 10
     };
     this.onSelect = this.onSelect.bind(this);
   }
 
   componentDidMount() {
-    this.allCharacters();
+    this.getCharacters()
   }
 
-  allCharacters() {
+  getCharacters() {
     const pathLocation = window.location.pathname;
     const character = "character";
     const BASE_URL = "https://rickandmortyapi.com/api/";
 
     if (pathLocation === "/home") {
-      axios.get(`${BASE_URL}${character}`).then(res => {
-        return this.setState({
-          characters: res.data.results.slice(0, 3)
-        });
-      });
+      this.getThreeCharactersRandom();
     } else {
-      axios.get(`${BASE_URL}${character}`).then(res => {
-        return this.setState({
-          characters: res.data.results
-        });
-      });
+        this.getAllCharacters(this.state.page)
     }
   }
 
-  randomCharacters() {
-    //create number random for show the characters
+  getRandom(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  getThreeCharactersRandom() {
+    const strPath = "https://rickandmortyapi.com/api/character/";
+    axios.all([
+        axios.get(`${strPath}${this.getRandom(1,496)}`),
+        axios.get(`${strPath}${this.getRandom(1,496)}`),
+        axios.get(`${strPath}${this.getRandom(1,496)}`),
+    ]).then(axios.spread((res1, res2, res3)=>{
+        const randomCharacters = [];
+        randomCharacters.push(res1.data);
+        randomCharacters.push(res2.data);
+        randomCharacters.push(res3.data);
+        return this.setState({
+            characters: randomCharacters
+          });
+    }));
+  }
+
+  getAllCharacters(page) {
+    const strPath = "https://rickandmortyapi.com/api/character/";
+    axios.get(`${strPath}?page=${page}`).then((res)=>{
+        return this.setState({
+            characters: res.data.results
+          });
+    })
   }
 
   onSelect(id) {

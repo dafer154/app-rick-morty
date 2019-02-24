@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./components/Home/Home";
 import ListCharacters from "./components/ListCharacters/ListCharacters";
 import DetailCharacter from './components/DetailCharacter/DetailCharacter';
+import InfiniteScroll from './components/share/InfiniteScroll';
 
 class App extends Component {
 
@@ -16,6 +17,7 @@ class App extends Component {
             <Route exact path="/home" component={Home} />
             <Route path="/List-character" component={ListCharacters} />
             <Route path="/character/:id" component={DetailCharacter}/>
+            <Route path="/infinite" component={InfiniteScroll}/>
           </Switch>
       </div>
     );
