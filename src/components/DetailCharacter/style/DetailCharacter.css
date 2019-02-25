@@ -1,44 +1,42 @@
-.cardDetail{
-    display: flex;
-    flex-wrap: wrap;
-    padding: 3%;
-    background: rgb(225, 246, 255);
-    border-radius: 10px;
-    box-shadow: 0 0 18px #2a264f;
-  }
-  
-  h2{
-    text-align: center;
-  }
-  
-  .wrapImage{
-    display:flex;
-  }
-  .imageCharacter{
-    border-radius: 8%;
-    box-shadow: 0 0 18px #2a264f;
-    text-align: center;
-    align-items: center;
-  }
-  .wrappImage{
-    flex-direction: column;
-  }
-  
-  .wrappText{
-    justify-content: center;
-    flex-direction: column;
-    text-align: justify;
-    padding: 2%;
-    max-width: 680px;
-  }
-  
-  label {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  p{
-    font-size: 22px;
-  }
-  
-  
+.cardDetail {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3%;
+  background: rgb(225, 246, 255);
+  border-radius: 10px;
+  box-shadow: 0 0 18px #2a264f;
+}
+
+h2 {
+  text-align: center;
+}
+
+.wrapImage {
+  display: flex;
+}
+.imageCharacter {
+  border-radius: 8%;
+  box-shadow: 0 0 18px #2a264f;
+  text-align: center;
+  align-items: center;
+}
+.wrappImage {
+  flex-direction: column;
+}
+
+.wrappText {
+  justify-content: center;
+  flex-direction: column;
+  text-align: justify;
+  padding: 2%;
+  max-width: 680px;
+}
+
+label {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+p {
+  font-size: 22px;
+}

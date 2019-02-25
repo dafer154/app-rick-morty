@@ -3,15 +3,13 @@ import { Character } from "../share/Character";
 import axios from "axios";
 import { Pagination } from "react-bootstrap";
 import './styles/WrapperCharacter.css';
+import {BASE_URL} from '../../actions/Service';
 
 export class WrapperCharacter extends Component {
   constructor() {
     super();
     this.state = {
       characters: [],
-      id: null,
-      pages: false,
-      page: 1
     };
     this.onSelectId = this.onSelectId.bind(this);
   }
@@ -20,29 +18,47 @@ export class WrapperCharacter extends Component {
     this.getCharacters();
   }
 
+  /**
+   * Nombre: getCharacters()
+   * Descripción: Método que evalua en que pagina se encuentra el usuario y 
+   * asi mismo renderiza los personajes
+   * return Arreglo con personaje
+   */
+
   getCharacters() {
     const pathLocation = window.location.pathname;
-    const character = "character";
-    const BASE_URL = "https://rickandmortyapi.com/api/";
-
-    if (pathLocation === "/home") {
+    if (pathLocation === "/") {
       this.getThreeCharactersRandom();
     } else {
       this.getAllCharacters(this.state.page);
     }
   }
 
+   /**
+   * Nombre: getRandom()
+   * Descripción: Método que genera un número al azar entre los parámetros dados
+   * @Input min: valor del límite inferior
+   * @Input max: valor del límite superior
+   * return Número aleatorio entre min y máx
+   */
+
   getRandom(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
+  /**
+   * Nombre: getThreeCharactersRandom()
+   * Descripción: Método que obtiene 3 personajes aleatorios para renderizar en la ruta '/'
+   * @Input min: valor del límite inferior
+   * @Input max: valor del límite superior
+   * return Arreglo con 3 personajes aleatorios
+   */
   getThreeCharactersRandom() {
-    const strPath = "https://rickandmortyapi.com/api/character/";
     axios
       .all([
-        axios.get(`${strPath}${this.getRandom(1, 496)}`),
-        axios.get(`${strPath}${this.getRandom(1, 496)}`),
-        axios.get(`${strPath}${this.getRandom(1, 496)}`)
+        axios.get(`${BASE_URL}${this.getRandom(1, 496)}`),
+        axios.get(`${BASE_URL}${this.getRandom(1, 496)}`),
+        axios.get(`${BASE_URL}${this.getRandom(1, 496)}`)
       ])
       .then(
         axios.spread((res1, res2, res3) => {
@@ -57,29 +73,38 @@ export class WrapperCharacter extends Component {
       );
   }
 
+    /**
+   * Nombre: getAllCharacters(page)
+   * Descripción: Método que obtiene los personajes por pagina para renderizar en la ruta '/personajes'
+   * @Input page: pagina a renderizar
+   * return Arreglo con personajes por pagina
+   */
   getAllCharacters(page) {
-    const strPath = "https://rickandmortyapi.com/api/character/";
-    axios.get(`${strPath}?page=${page}`).then(res => {
+    axios.get(`${BASE_URL}?page=${page}`).then(res => {
       return this.setState({
-        page: page,
         characters: res.data.results
       });
     });
   }
 
-  onSelect(id) {
-    return this.props.history.push(`/character/${id}`);
-  }
+  
+  /**
+   * Nombre: onSelectId(page)
+   * Descripción: Método que obtiene el id del boton pagina
+   * @Input e: evento del boton
+   * return valor del boton---key
+   */
 
   onSelectId(e) {
     const page = e.target.text;
-    console.log(page);
     this.getAllCharacters(page);
   }
 
   render() {
+    //URL actual del usuario dentro de la app
     const pathLocation = window.location.pathname;
 
+    //Creacion de botones para la paginacion
     let active = 1;
     let items = [];
     for (let number = 1; number <= 25; number++) {
@@ -97,7 +122,7 @@ export class WrapperCharacter extends Component {
 
     return (
       <div>
-        {pathLocation !== "/home" ? (
+        {pathLocation !== "/" ? (
           <div>
           <Pagination size="lg" style={wrappNumbers}>
             {items}
@@ -114,7 +139,6 @@ export class WrapperCharacter extends Component {
               pkCharacter={character.id}
               src={character.image}
               name={character.name}
-              onSelect={this.onSelect}
             />
           ))}
         </div>
@@ -122,8 +146,6 @@ export class WrapperCharacter extends Component {
     );
   }
 }
-
-
 
 const wrappNumbers = {
   display: "flex",

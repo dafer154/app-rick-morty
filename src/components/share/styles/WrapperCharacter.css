@@ -5,12 +5,4 @@
   justify-items: center;
   align-items: center;
   margin-top: 2%;
-};
-
-  
-.wrappNumbers {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  padding: 4% !important;
-  justify-content: center !important;
-};
+}

@@ -1,12 +1,12 @@
 .cardResponsive {
-    width: 18rem; 
-    margin: 2%;
+  width: 18rem;
+  margin: 2%;
 }
 
 .buttonLink {
-    color: white;
-    border-radius: 9px;
-    padding: 3%;
-    background: rgb(138, 43, 226);
-    font-weight: bold;
+  color: white;
+  border-radius: 9px;
+  padding: 3%;
+  background: rgb(138, 43, 226);
+  font-weight: bold;
 }

@@ -17,6 +17,12 @@ export class DetailCharacter extends Component {
     }
   }
 
+  /**
+   * Nombre: getDetails()
+   * Descripción: Método que obtiene el detalle de los personajes
+   * return Objeto con detalle del personaje
+   */
+
   getDetails() {
     const detail = `character/${this.state.id}`;
     const BASE_URL = "https://rickandmortyapi.com/api/";
@@ -36,6 +42,7 @@ export class DetailCharacter extends Component {
               <img
                 className="imageCharacter"
                 src={this.state.character.image}
+                alt={this.state.character.name}
               />
             </div>
 
