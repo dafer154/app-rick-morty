@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
+import './styles/Character.css';
 export class Character extends Component {
   constructor(props) {
     super(props);
@@ -14,16 +14,16 @@ export class Character extends Component {
 
   render() {
     return (
-      <div className="card" style={{ width: "18rem", marginBottom: '4%' }}>
+      <div className="card cardResponsive">
         <img src={this.props.src} className="card-img-top" alt={this.props.name}/>
         <div className="card-body">
-          <h5>{this.props.name}</h5>
-          <Link style={buttonLink}
+          <h5 className="card-title">{this.props.name}</h5>
+          <Link className="buttonLink"
             to={{
               pathname: `/character/${this.props.pkCharacter}`
             }}
           >
-            Detail
+            Detalle
           </Link>
         </div>
       </div>
@@ -31,13 +31,7 @@ export class Character extends Component {
   }
 }
 
-const buttonLink = {
-    color: 'rgb(255, 255, 255)',
-    border: '1px solid',
-    borderRadius: '12',
-    padding: '4%',
-    paddingRight: '8%',
-    paddingLeft: '8%',
-    background: 'rgb(138, 43, 226)'
-}
+
+
+
 
