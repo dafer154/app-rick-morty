@@ -1,0 +1,15 @@
+{
+  "main.css": "/app-rick-morty/static/css/main.56203c08.chunk.css",
+  "main.js": "/app-rick-morty/static/js/main.cf4d849e.chunk.js",
+  "main.js.map": "/app-rick-morty/static/js/main.cf4d849e.chunk.js.map",
+  "runtime~main.js": "/app-rick-morty/static/js/runtime~main.be04a125.js",
+  "runtime~main.js.map": "/app-rick-morty/static/js/runtime~main.be04a125.js.map",
+  "static/css/2.38bb2c49.chunk.css": "/app-rick-morty/static/css/2.38bb2c49.chunk.css",
+  "static/js/2.832efb7f.chunk.js": "/app-rick-morty/static/js/2.832efb7f.chunk.js",
+  "static/js/2.832efb7f.chunk.js.map": "/app-rick-morty/static/js/2.832efb7f.chunk.js.map",
+  "index.html": "/app-rick-morty/index.html",
+  "precache-manifest.c748c6a1511c8a3605941ce4071b1821.js": "/app-rick-morty/precache-manifest.c748c6a1511c8a3605941ce4071b1821.js",
+  "service-worker.js": "/app-rick-morty/service-worker.js",
+  "static/css/2.38bb2c49.chunk.css.map": "/app-rick-morty/static/css/2.38bb2c49.chunk.css.map",
+  "static/css/main.56203c08.chunk.css.map": "/app-rick-morty/static/css/main.56203c08.chunk.css.map"
+}
